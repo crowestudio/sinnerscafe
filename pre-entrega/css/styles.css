@@ -1,0 +1,869 @@
+/* ============================================================
+   SINNERS CAFÉ — Stylesheet
+   Metodología: BEM (Block__Element--Modifier)
+   Fuente: Host Grotesk (Google Fonts)
+   ============================================================ */
+
+/* ---- 01 · VARIABLES ---- */
+
+:root {
+  --color-primary:   #D8E303;
+  --color-secondary: #1c1c1c;
+  --color-bg:        #f5f4ee;
+  --color-muted:     #6b6b66;
+  --color-line:      #e6e4d9;
+}
+
+/* ---- 02-RESET ---- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: 'Host Grotesk', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-secondary);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ---- 03-HEADER Y NAVBAR ---- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+}
+
+.nav__left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Logo imagen */
+.nav__logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo {
+  height: 36px;
+  width: auto;
+}
+
+/* Lista de navegación */
+.nav__links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nav__links a {
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background-color: var(--color-secondary);
+  transition: width 0.3s ease;
+}
+
+.nav__links a:hover::after {
+  width: 100%;
+}
+
+/* Íconos de la derecha */
+.nav__right {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.nav__icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.nav__icon:hover {
+  background-color: rgba(28, 28, 28, 0.08);
+}
+
+/* ---- 04-HERO ---- */
+
+.hero {
+  background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-secondary);
+  padding: 24px 32px 32px;
+}
+
+/* Contenedor de la imagen */
+.hero__img-wrap {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+/* Imagen real */
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto superpuesto en imagen */
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Info debajo imagen */
+.hero__meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+/* ---- 05-PRODUCTOS — Flexbox ---- */
+
+.products {
+  padding: 80px 32px;
+}
+
+.products__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+  gap: 40px;
+}
+
+.products__title {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.products__title em {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.products__subtitle {
+  max-width: 320px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.products__subtitle strong {
+  color: var(--color-secondary);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Flexbox: 4 columnas en desktop */
+.products__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.product {
+  flex: 0 0 calc(25% - 18px);
+  cursor: pointer;
+}
+
+.product__img {
+  height: 320px;
+  background-color: #ece9dc;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 14px;
+  transition: transform 0.3s ease;
+}
+
+.product__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product:hover .product__img {
+  transform: translateY(-4px);
+}
+
+/* Variantes de fondo */
+.product:nth-child(1) .product__img { background-color: #e8d8c4; }
+.product:nth-child(2) .product__img { background-color: #d8c9b8; }
+.product:nth-child(3) .product__img { background-color: var(--color-primary); }
+.product:nth-child(4) .product__img { background-color: #2a2522; }
+
+/* Badge de la card */
+.product__tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.product__tag--alt {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.product__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.product__name {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.product__meta {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.product__price {
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---- 06-REVIEWS ---- */
+
+.reviews {
+  padding: 80px 32px;
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+}
+
+.reviews__head {
+  margin-bottom: 48px;
+}
+
+.reviews__title {
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.reviews__title em {
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+/* Grid: 3 columnas en desktop */
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.review {
+  border: 1px solid rgba(245, 244, 238, 0.15);
+  padding: 32px;
+}
+
+.review__stars {
+  color: var(--color-primary);
+  font-size: 18px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.review__text {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+.review__author {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* ---- 07- BANNER con video de fondo ---- */
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  min-height: 520px;
+}
+
+/* Video de fondo */
+.banner__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Overlay oscuro sobre el video */
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Contenido encima del video */
+.banner__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 60px 40px;
+}
+
+.banner__eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0.75;
+}
+
+.banner__title {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+
+.banner__title em {
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.banner__cta {
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.banner__cta:hover {
+  opacity: 0.85;
+}
+
+/* ---- 08-CONTACTO ---- */
+
+.contact {
+  padding: 80px 32px;
+  border-top: 1px solid var(--color-line);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact__title {
+  font-size: 4.5rem;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: 30px;
+}
+
+.contact__title em {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.contact__desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin-bottom: 40px;
+}
+
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-secondary);
+}
+
+.contact__row:last-child {
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.contact__label {
+  color: var(--color-muted);
+}
+
+/* Formulario */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--color-secondary);
+  padding: 20px 0;
+}
+
+.form__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+
+.form__field:focus-within .form__label {
+  color: var(--color-secondary);
+}
+
+.form__input,
+.form__textarea,
+.form__select {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 17px;
+  color: var(--color-secondary);
+  padding: 4px 0;
+  resize: none;
+}
+
+.form__textarea {
+  min-height: 80px;
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: rgba(28, 28, 28, 0.3);
+}
+
+.form__select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form__submit {
+  margin-top: 32px;
+  padding: 20px 28px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.form__submit:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  outline: 1px solid var(--color-secondary);
+}
+
+.form__status {
+  margin-top: 14px;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  min-height: 18px;
+}
+
+/* ---- 09-CLAIM FOOTER ---- */
+
+.claim {
+  background-color: var(--color-primary);
+  padding: 60px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 36px;
+  border-top: 1px solid var(--color-secondary);
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+/* Slogan grande en mayúsculas */
+.claim__slogan {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+
+
+/* ---- 10-FOOTER ---- */
+
+.footer {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+  padding: 100px 32px 0;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 48px;
+  align-items: start;
+}
+
+/* Columna de marca */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__logo-link {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.footer__logo {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer__about {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.7;
+  margin-bottom: 0;
+}
+
+
+/* Columnas de links del footer */
+.footer__col {
+  text-align: left;
+}
+
+.footer__col-title {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 238, 0.5);
+  margin-bottom: 12px;
+}
+
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.footer__col li {
+  text-align: left;
+}
+
+.footer__col a:hover {
+  color: var(--color-primary);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid rgba(245, 244, 238, 0.12);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(245, 244, 238, 0.5);
+}
+
+.footer__bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+/* SINNERS gigante al pie */
+.footer__mega {
+  font-size: 22rem;
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: var(--color-primary);
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ---- 11-RESPONSIVE ---- */
+
+/* Tablet: hasta 1024px */
+@media (max-width: 1024px) {
+
+  .nav__links {
+    display: none;
+  }
+
+  .hero__img-wrap {
+    height: 420px;
+  }
+
+  /* Productos: 2 por fila */
+  .product {
+    flex: 0 0 calc(50% - 12px);
+  }
+
+  .products__title {
+    font-size: 3.25rem;
+  }
+
+  .products__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* Reseñas: 1 columna */
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews__title {
+    font-size: 2.5rem;
+  }
+
+  .banner__title {
+    font-size: 3.25rem;
+  }
+
+  /* Contacto: 1 columna */
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contact__title {
+    font-size: 3.2rem;
+  }
+
+  /* Footer: 2 columnas */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer__mega {
+    font-size: 260px;
+  }
+
+  .claim__slogan {
+    font-size: 3rem;
+  }
+}
+
+/* Mobile: hasta 640px */
+@media (max-width: 640px) {
+
+  .nav {
+    padding: 14px 20px;
+  }
+
+  .hero {
+    padding: 16px 20px 24px;
+  }
+
+  .hero__img-wrap {
+    height: 360px;
+  }
+
+  .hero__meta {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.6rem;
+  }
+
+  .products {
+    padding: 48px 20px;
+  }
+
+  .products__title {
+    font-size: 2rem;
+  }
+
+  /* Productos: 2 por fila en mobile */
+  .product {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  .product__img {
+    height: 220px;
+  }
+
+  .reviews {
+    padding: 48px 20px;
+  }
+
+  .reviews__title {
+    font-size: 32px;
+  }
+
+  .banner__title {
+    font-size: 36px;
+  }
+
+  .contact {
+    padding: 48px 20px;
+  }
+
+  .contact__title {
+    font-size: 40px;
+  }
+
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .claim {
+    padding: 48px 20px;
+  }
+
+  .claim__slogan {
+    font-size: 2rem;
+  }
+
+  .footer {
+    padding: 48px 20px 0;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer__mega {
+    font-size: 6.5rem;
+  }
+}
