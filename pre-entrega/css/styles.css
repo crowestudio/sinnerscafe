@@ -255,19 +255,19 @@ ul {
 .product__img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  padding: 16px;
 }
 
 .product:hover .product__img {
   transform: translateY(-4px);
 }
 
-/* Variantes de fondo */
-.product:nth-child(1) .product__img { background-color: #e8d8c4; }
-.product:nth-child(2) .product__img { background-color: #d8c9b8; }
-.product:nth-child(3) .product__img { background-color: var(--color-primary); }
-.product:nth-child(4) .product__img { background-color: #2a2522; }
+/* Fondo uniforme para imágenes de la API */
+.product__img {
+  background-color: #fff;
+}
 
 /* Badge de la card */
 .product__tag {
@@ -314,6 +314,60 @@ ul {
   font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
+}
+
+/* ---- 05b-IMÁGENES DE CAFÉ (JSON local) ---- */
+
+.product__img--cafe img {
+  object-fit: cover;
+  padding: 0;
+}
+
+/* ---- 05c-BOTÓN VER TODOS ---- */
+
+.products__cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.products__cta-btn {
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.products__cta-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  outline: 1px solid var(--color-secondary);
+}
+
+/* ---- 05d-BOTÓN AGREGAR EN CARDS ---- */
+
+.product__add {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 0;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.product__add:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  outline: 1px solid var(--color-secondary);
 }
 
 /* ---- 06-REVIEWS ---- */
@@ -453,7 +507,28 @@ ul {
   opacity: 0.85;
 }
 
-/* ---- 08-CONTACTO ---- */
+/* ---- 08-HERO CONTACTO ---- */
+
+.contact-hero {
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 32px;
+  overflow: hidden;
+}
+
+.contact-hero__text {
+  font-size: 12rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--color-primary);
+  text-align: center;
+  user-select: none;
+}
+
+/* ---- 08b-CONTACTO ---- */
 
 .contact {
   padding: 80px 32px;
@@ -465,6 +540,43 @@ ul {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: start;
+}
+
+/* Variante centrada (contacto.html) */
+.contact--centered {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 80px;
+}
+
+.contact--centered .contact__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact--centered .contact__title {
+  margin-bottom: 0;
+}
+
+.contact--centered .contact__desc {
+  margin-bottom: 0;
+}
+
+.contact--centered .contact__links {
+  width: 100%;
+}
+
+.contact--centered .form {
+  width: 100%;
+}
+
+.contact--centered .form__submit {
+  text-align: center;
 }
 
 .contact__title {
@@ -631,7 +743,7 @@ ul {
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 60px;
   padding-bottom: 48px;
   align-items: start;
@@ -664,7 +776,7 @@ ul {
 
 /* Columnas de links del footer */
 .footer__col {
-  text-align: left;
+  text-align: right;
 }
 
 .footer__col-title {
@@ -683,11 +795,18 @@ ul {
 }
 
 .footer__col li {
-  text-align: left;
+  text-align: right;
 }
 
 .footer__col a:hover {
   color: var(--color-primary);
+}
+
+/* Links con ícono (redes sociales) */
+.footer__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .footer__bottom {
@@ -718,13 +837,258 @@ ul {
   user-select: none;
 }
 
-/* ---- 11-RESPONSIVE ---- */
+/* ---- 11-PÁGINA DE CARRITO ---- */
+
+.cart-page {
+  padding: 80px 32px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cart-page__head {
+  margin-bottom: 48px;
+}
+
+.cart-page__title {
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.cart-page__title em {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.cart-page__empty {
+  font-size: 14px;
+  color: var(--color-muted);
+  text-align: center;
+  padding: 60px 0;
+}
+
+.cart-page__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.cart-page__item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background-color: #fff;
+  flex-shrink: 0;
+}
+
+.cart-page__item:first-child {
+  border-top: 1px solid var(--color-line);
+}
+
+.cart-page__item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.cart-page__item-name {
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.cart-page__item-price {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.cart-page__item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-page__item-btn {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-secondary);
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.cart-page__item-btn:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.cart-page__item-qty {
+  font-size: 15px;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+}
+
+.cart-page__item-remove {
+  font-size: 14px;
+  color: var(--color-muted);
+  margin-left: 10px;
+  transition: color 0.2s;
+}
+
+.cart-page__item-remove:hover {
+  color: #c62828;
+}
+
+.cart-page__footer {
+  margin-top: 32px;
+  display: none;
+}
+
+.cart-page__total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+
+.cart-page__checkout {
+  width: 100%;
+  padding: 20px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.cart-page__checkout:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  outline: 1px solid var(--color-secondary);
+}
+
+/* ---- 12-CONTADOR DEL CARRITO EN NAV ---- */
+
+.nav__cart {
+  position: relative;
+}
+
+.nav__cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.nav__cart-count:empty {
+  display: none;
+}
+
+/* ---- 13-TOAST (feedback visual) ---- */
+
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 200;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---- 14-ERRORES DE FORMULARIO ---- */
+
+.form__error {
+  font-size: 12px;
+  color: #c62828;
+  margin-top: 6px;
+  min-height: 16px;
+}
+
+/* ---- 15-MENÚ HAMBURGUESA (mobile) ---- */
+
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background-color: var(--color-secondary);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Menú mobile abierto */
+.nav__links--mobile-open {
+  display: flex !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-secondary);
+  padding: 20px 32px;
+  gap: 16px;
+}
+
+/* ---- 16-RESPONSIVE ---- */
 
 /* Tablet: hasta 1024px */
 @media (max-width: 1024px) {
 
   .nav__links {
     display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+
+  .nav__logo {
+    height: 28px;
   }
 
   .hero__img-wrap {
@@ -765,6 +1129,10 @@ ul {
     gap: 48px;
   }
 
+  .contact-hero__text {
+    font-size: 7rem;
+  }
+
   .contact__title {
     font-size: 3.2rem;
   }
@@ -781,6 +1149,14 @@ ul {
 
   .claim__slogan {
     font-size: 3rem;
+  }
+
+  .cart-page {
+    padding: 48px 20px;
+  }
+
+  .cart-page__title {
+    font-size: 2.5rem;
   }
 }
 
@@ -799,6 +1175,11 @@ ul {
     height: 360px;
   }
 
+  .hero__overlay {
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .hero__meta {
     flex-direction: column;
     gap: 6px;
@@ -813,9 +1194,9 @@ ul {
     font-size: 2rem;
   }
 
-  /* Productos: 2 por fila en mobile */
+  /* Productos: 1 por fila en mobile */
   .product {
-    flex: 0 0 calc(50% - 8px);
+    flex: 0 0 100%;
   }
 
   .product__img {
@@ -832,6 +1213,14 @@ ul {
 
   .banner__title {
     font-size: 36px;
+  }
+
+  .contact-hero {
+    padding: 48px 20px;
+  }
+
+  .contact-hero__text {
+    font-size: 4rem;
   }
 
   .contact {
@@ -863,7 +1252,36 @@ ul {
     gap: 32px;
   }
 
+  .footer__brand {
+    text-align: center;
+  }
+
+  .footer__logo-link {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer__about {
+    text-align: left;
+  }
+
+  .footer__col {
+    text-align: left;
+  }
+
+  .footer__col li {
+    text-align: left;
+  }
+
   .footer__mega {
     font-size: 6.5rem;
+  }
+
+  .cart-page {
+    padding: 32px 20px;
+  }
+
+  .cart-page__title {
+    font-size: 2rem;
   }
 }

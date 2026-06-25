@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sinners Café — Taller de tueste artesanal. Café de especialidad 100% arábica, directo del productor a tu taza." />
-  <title>Sinners Café</title>
+  <meta name="description" content="Sinners Café — Contactanos. Mayoristas, prensa, eventos o consultas generales." />
+  <title>Contacto — Sinners Café</title>
 
   <!-- Google Fonts: Host Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,13 +25,11 @@
         </a>
       </div>
       <div class="nav__right">
-        <!-- Menú -->
         <ul class="nav__links" id="navLinks">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="productos.html">Productos</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
-        <!-- Hamburguesa (mobile) -->
         <button class="nav__hamburger" id="navHamburger" aria-label="Menú">
           <span></span><span></span><span></span>
         </button>
@@ -53,109 +51,84 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__img-wrap">
-        <img src="media/hero-photo.webp" alt="Café artesanal Sinners" class="hero__img" />
-        <!-- Texto superpuesto -->
-        <div class="hero__overlay">
-          <span>Edición de Otoño 2026</span>
-          <span>Tueste artesanal · 100% arábica</span>
-        </div>
-      </div>
-      <div class="hero__meta">
-        <span>Tueste lento · 18h</span>
-        <span>De grano a taza · directo</span>
-        <span>Envíos gratis en compras mayores a $50.000</span>
-      </div>
+    <!-- HERO CONTACTO -->
+    <section class="contact-hero">
+      <div class="contact-hero__text">CONTACTO</div>
     </section>
 
-    <!-- PRODUCTOS DESTACADOS: cards desde JSON local -->
-    <section class="products" id="shop">
-      <div class="products__head">
-        <h2 class="products__title">Nuevos <em>sabores</em></h2>
-        <div class="products__subtitle">
-          <strong>Cosecha 2026 / Lote limitado</strong>
-          Cuatro perfiles únicos tostados esta semana en nuestro taller.
+    <!-- CONTACTO -->
+    <section class="contact contact--centered" id="contacto">
+
+      <div class="contact__intro">
+        <h2 class="contact__title">Hablemos <em>de café.</em></h2>
+        <p class="contact__desc">
+          Mayoristas, prensa, eventos o simplemente querés saber más.
+          Respondemos antes de 24 horas.
+        </p>
+      </div>
+
+      <!-- Info de contacto -->
+      <div class="contact__links">
+        <div class="contact__row">
+          <span class="contact__label">Email</span>
+          <span>hola@sinners.cafe</span>
+        </div>
+        <div class="contact__row">
+          <span class="contact__label">Teléfono</span>
+          <span>+54 11 0000-0000</span>
+        </div>
+        <div class="contact__row">
+          <span class="contact__label">Local</span>
+          <span>Palermo, Buenos Aires</span>
         </div>
       </div>
 
-      <!-- Se llena dinámicamente con los datos del JSON local -->
-      <div class="products__grid" id="productsDestacados"></div>
-
-      <div class="products__cta">
-        <a href="productos.html" class="products__cta-btn">Ver todos los productos →</a>
-      </div>
-    </section>
-
-    <!-- RESEÑAS: layout Grid -->
-    <section class="reviews" id="resenas">
-      <div class="reviews__head">
-        <h2 class="reviews__title">Lo que dicen<br><em>nuestros clientes</em></h2>
-      </div>
-      <div class="reviews__grid">
-
-        <div class="review">
-          <div class="review__stars">★★★★★</div>
-          <p class="review__text">
-            "El Yirgacheffe me cambió la manera de tomar café. Notas florales increíbles,
-            muy diferente a todo lo que probé antes."
-          </p>
-          <div class="review__author">— Valentina G., Buenos Aires</div>
+      <!-- Formulario con validación JS -->
+      <form class="form" id="contactForm" novalidate>
+        <div class="form__row">
+          <div class="form__field">
+            <label class="form__label" for="name">Nombre</label>
+            <input class="form__input" type="text" id="name" name="name" placeholder="Tu nombre" required />
+            <span class="form__error" id="nameError"></span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="email">Email</label>
+            <input class="form__input" type="email" id="email" name="email" placeholder="hola@email.com" required />
+            <span class="form__error" id="emailError"></span>
+          </div>
         </div>
 
-        <div class="review">
-          <div class="review__stars">★★★★★</div>
-          <p class="review__text">
-            "El Huila Reserva es mi favorito del día a día. Chocolate y caramelo perfectos,
-            sin acidez. Lo pido cada mes."
-          </p>
-          <div class="review__author">— Marcos R., Rosario</div>
+        <div class="form__field">
+          <label class="form__label" for="subject">Asunto</label>
+          <select class="form__select" id="subject" name="subject">
+            <option>Consulta general</option>
+            <option>Mayoristas / B2B</option>
+            <option>Prensa y colaboraciones</option>
+            <option>Suscripción</option>
+          </select>
         </div>
 
-        <div class="review">
-          <div class="review__stars">★★★★★</div>
-          <p class="review__text">
-            "La suscripción es lo mejor que descubrí. Cada lunes llega fresco y el
-            packaging es hermoso. Totalmente recomendado."
-          </p>
-          <div class="review__author">— Laura M., Córdoba</div>
+        <div class="form__field">
+          <label class="form__label" for="message">Mensaje</label>
+          <textarea class="form__textarea" id="message" name="message" placeholder="Cuéntanos en qué te podemos ayudar…" required></textarea>
+          <span class="form__error" id="messageError"></span>
         </div>
 
-      </div>
-    </section>
+        <button type="submit" class="form__submit">
+          Enviar mensaje →
+        </button>
 
-    <!-- BANNER: video de fondo -->
-    <section class="banner">
-      <!-- Video de fondo -->
-      <video class="banner__video" autoplay muted loop playsinline>
-        <source src="media/cafe-banner.mp4" type="video/mp4" />
-      </video>
-      <!-- Contenido encima del video -->
-      <div class="banner__content">
-        <div class="banner__eyebrow">
-          Suscripción mensual · 15% dto. · Sin permanencia
-        </div>
-        <h2 class="banner__title">
-          Café fresco<br>
-          <em>cada lunes</em>, en tu puerta.
-        </h2>
-        <a href="contacto.html" class="banner__cta">Empezar suscripción →</a>
-      </div>
+        <p class="form__status" id="formStatus"></p>
+      </form>
+
     </section>
 
   </main>
-
-  <!-- CLAIM -->
-  <div class="claim">
-    <p class="claim__slogan">Guiados por el sabor,<br>no por las tendencias.</p>
-  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer__grid">
 
-      <!-- Columna de marca -->
       <div class="footer__brand">
         <a href="index.html" class="footer__logo-link">
           <img src="media/sinners-logo.svg" alt="Sinners Café" class="footer__logo" />
@@ -167,7 +140,6 @@
         </p>
       </div>
 
-      <!-- Columna Acceso -->
       <div class="footer__col">
         <p class="footer__col-title">Acceso</p>
         <ul>
@@ -177,7 +149,6 @@
         </ul>
       </div>
 
-      <!-- Columna Contacto -->
       <div class="footer__col">
         <p class="footer__col-title">Contacto</p>
         <ul>

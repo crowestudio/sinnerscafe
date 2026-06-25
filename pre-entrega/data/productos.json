@@ -1,0 +1,46 @@
+[
+  {
+    "id": 154,
+    "name": "Yirgacheffe",
+    "description": "Café de Etiopía, con notas florales y cítricas",
+    "origin": "Etiopía",
+    "notes": "Floral · Cítrico",
+    "price": 18000,
+    "tag": "Nuevo",
+    "tagStyle": "default",
+    "image": "media/yirgacheffe.webp"
+  },
+  {
+    "id": 155,
+    "name": "Huila",
+    "description": "Café colombiano con notas de chocolate y caramelo",
+    "origin": "Colombia",
+    "notes": "Chocolate · Caramelo",
+    "price": 16000,
+    "tag": "Best Seller",
+    "tagStyle": "alt",
+    "image": "media/huila.webp"
+  },
+  {
+    "id": 156,
+    "name": "Nyeri AA",
+    "description": "De origen keniano, con notas de vino y grosellas. Sabor intenso",
+    "origin": "Kenia",
+    "notes": "Grosella · Vino",
+    "price": 22000,
+    "tag": "Edición",
+    "tagStyle": "default",
+    "image": "media/nyeri.webp"
+  },
+  {
+    "id": 130,
+    "name": "Antigua",
+    "description": "Café de Guatemala, especiado y ahumado. Una edición oscura y fuerte",
+    "origin": "Guatemala",
+    "notes": "Especiado · Humo",
+    "price": 19000,
+    "tag": "Edición Oscura",
+    "tagStyle": "alt",
+    "image": "media/antiguaguate.webp"
+  }
+]
